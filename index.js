@@ -1,60 +1,51 @@
 // TODO: Include packages needed for this application
+const fs = require("fs");
+const inquirer = require("inquirer");
+const path = require("path");
+const generateMarkdown = require("./utils/generateMarkdown");
 
-// TODO: Create an array of questions for user input
 const questions = [
     {
         type: "input",
-        message: "What is the title of your project?",
         name: "title",
-        default: "project title",
-        validate: function (answer) {
-            if (answer.length < 1) {
-                return console.log("Please enter your project title.");
-            }
-            return true;
-        }
+        message: "What is the name of your project?",
     },
     {
         type: "input",
-        message: "What is the description of your project?",
         name: "description",
-        default: "project description",
-        validate: function (answer) {
-            if (answer.length < 1) {
-                return console.log("Please enter a description.");
-            }
-            return true;
-        }
+        message: "What is the purpose of your project?",
+    },
+    {
+        type: "checkbox",
+        name: "license",
+        message: "Please choose a license for your project?",
+        choices: ["MIT", "APACHE2.0", "Boost1.0", "MPL2.0"],
     },
     {
         type: "input",
-        message: "What are the steps to install your project?"
-        name: "installation"
+        name: "require",
+        message: "List any dependencies here.",
     },
     {
         type: "input",
-        message: ""
+        name: "usage",
+        message: "What are the technologies associated with your project?",
     }
-        
-        
-        
-        
-    ];
+]
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(filename, data, err => {
-        if (err) {
-            return console.log(err);
-        }
-        console.log("Your README.md file has been generated!")
-    });
+    return fs.writeFileSync(path.join(process.cwd(), fileName), data);
 }
 
-const writeFileAsync = util.promisify(writeToFile);
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions).then((responses) => {
+        console.log("Generating a README.md file...");
+        writeToFile("./dist/README.md", generateMarkdown({ ...responses }));
+    });
+}
 
 // Function call to initialize app
 init();
