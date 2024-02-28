@@ -5,7 +5,7 @@
 // it displays nothing.
 function renderLicenseBadge(license) {
   if (license !== "none") {
-    return `![Github license](https://img.shields.io/badge/license-${licnese}-yellowgreen.svg)`;
+    return `![Github license](https://img.shields.io/badge/license-${license}-yellowgreen.svg)`;
   }
   return "";
 }
@@ -38,13 +38,12 @@ function renderLicenseSection(license) {
 
 // This function generates a markdown file with the README template.
 function generateMarkdown(data) {
-  return `# ${data.title}
-  # My Project Title
+  return ` 
+  #Project Title
+  ${data.title}
 
-  ## Section 1
-  - Item 1
-  - Item 2
-  - Item 3
+  ## Description
+  ${data.description}
 
   ## Table of Contents (Optional)
   1. Numbered Item 1
@@ -54,12 +53,14 @@ function generateMarkdown(data) {
   ## Installation
 
   ## Usage
-
+  ${data.usage}
   ## Credits
 
   
   ## license
-  ${renderLicenseBadge(license)}
+  ${renderLicenseSection(data.license)}
+  ${renderLicenseBadge(data.license)}
+  ${renderLicenseLink(data.license)}
 `;
 }
 
