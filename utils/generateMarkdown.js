@@ -51,11 +51,13 @@ function generateMarkdown(data) {
   3. Numbered Item 3
 
   ## Installation
-
+  ${data.require}
   ## Usage
   ${data.usage}
   ## Credits
 
+  ## E-mail
+  ${data.email}
   
   ## license
   ${renderLicenseSection(data.license)}

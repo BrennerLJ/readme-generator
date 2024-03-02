@@ -1,9 +1,9 @@
  
   #Project Title
-  stuff
+  readme generator
 
   ## Description
-  stuff
+  To generate README.md files for projects
 
   ## Table of Contents (Optional)
   1. Numbered Item 1
@@ -11,11 +11,13 @@
   3. Numbered Item 3
 
   ## Installation
-
+  inquirer
   ## Usage
-  i can't remember
+  JavaScript and Node
   ## Credits
 
+  ## E-mail
+  bjbrenardjoey@gmail.com
   
   ## license
   ## License

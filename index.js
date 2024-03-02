@@ -30,6 +30,11 @@ const questions = [
         type: "input",
         name: "usage",
         message: "What are the technologies associated with your project?",
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "What is your email address?",
     }
 ]
 
@@ -43,7 +48,7 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions).then((responses) => {
         console.log("Generating a README.md file...");
-        writeToFile("./dist/README.md", generateMarkdown({ ...responses }));
+        writeToFile("./readme-generated/README.md", generateMarkdown({ ...responses }));
     });
 }
 
